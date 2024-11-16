@@ -1,35 +1,29 @@
-/***************************************************************************//**
-  @file     FSM.h
-  @brief    Logic state machine
-  @author   Grupo 4 Laboratorio de Microprocesadores:
-  	  	  	Corcos, Manuel
-  	  	  	Lesiuk, Alejandro
-  	  	  	Paget, Milagros
-  	  	  	Voss, Maria de Guadalupe
- ******************************************************************************/
-
-#ifndef _FSM_H_
-#define _FSM_H_
-
- /*******************************************************************************
-  * INCLUDE HEADER FILES
-  ******************************************************************************/
-
-//#include pipi.h
+/* 
+ * fsm.h
+ *
+ *  Created on: 28/07/2014
+ *      Author: Daniel Jacoby
+ */
 
 
+#ifndef FSM_H_
+#define FSM_H_
 
 
-/*******************************************************************************
- *  FUNCTION PROTOTYPES WITH GLOBAL SCOPE
- ******************************************************************************/
+#define FIN_TABLA 0xFF
 
- /**
-  * @brief Logic.
-  * @param void.
-  * @return Returns 1 if error, 0 if everything is ok.
-  */
-int fsm(void);
+typedef	unsigned char BYTE;
+typedef struct state_diagram_edge STATE;
 
+struct state_diagram_edge
 
-#endif // _FSM_H_
+{
+	BYTE  evento;
+	STATE *proximo_estado;
+	void (*p_rut_accion)(void);
+};
+
+// Interfaz
+STATE* fsm(STATE *p_tabla_estado,BYTE evento_actual);
+
+#endif /* FSM_H_ */
