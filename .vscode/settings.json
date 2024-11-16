@@ -1,5 +1,7 @@
 {
     "files.associations": {
-        "eventqueue.h": "c"
+        "eventqueue.h": "c",
+        "peripherals.h": "c",
+        "ftm.h": "c"
     }
 }

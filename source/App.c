@@ -26,8 +26,8 @@
 //#include "button.h"
 //#include "encoder.h"
 //#include "display.h"
-//#include "vumeter.h"
-//#include "equalizer.h"
+#include "vumeter/vumeter.h"
+#include "equalizer/equalizer.h"
 //#include "deepSleep.h"
 #include "eventos/eventQueue.h"
 
@@ -51,8 +51,8 @@ void App_Init(void)
 	//initButtons();
 	//initEncoder();
 	//initDisplay();
-	//initVumeter();
-	//initEqualizer();
+	initVumeter();
+	initEqualizer();
 
 	//deepSleep_init();
 
