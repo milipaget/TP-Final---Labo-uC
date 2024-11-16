@@ -5,11 +5,14 @@
  ******************************************************************************/
 
 
-
 /*******************************************************************************
  * INCLUDE HEADER FILES
  ******************************************************************************/
-#include "drv_DEVBOARD.h"
+
+
+#include "MCAL/board.h"
+#include "MCAL/gpio.h"
+#include <stdbool.h>
 
  /*******************************************************************************
  * CONSTANT AND MACRO DEFINITIONS USING #DEFINE
@@ -24,72 +27,65 @@
 /*******************************************************************************
  * VARIABLE PROTOTYPES WITH GLOBAL SCOPE
  ******************************************************************************/
-/*******************************************************************************
- * function PROTOTYPES WITH local SCOPE
- ******************************************************************************/
+
 /*******************************************************************************
  * FUNCTION PROTOTYPES WITH GLOBAL SCOPE
  ******************************************************************************/
 
-void init_DEVBOARD(void){
 
-	//PINES DE ERROR
+ void init_K64Leds(void){
 
-	//gpioMode(ERROR_PIN_1,OUTPUT);
-	//gpioWrite(ERROR_PIN_1,false);
+	 gpioMode (PIN_LED_RED,OUTPUT);
+	 gpioWrite(PIN_LED_RED,LED_OFF); //  apago led
 
+	 gpioMode (PIN_LED_GREEN,OUTPUT);
+	 gpioWrite(PIN_LED_GREEN,LED_OFF); // apago led
 
-	//PINES DE DEBUG
-
-	gpioMode(DEBUG_PIN_1,OUTPUT);
-	gpioWrite(DEBUG_PIN_1,false);
-
-	gpioMode(DEBUG_PIN_2,OUTPUT);
-	gpioWrite(DEBUG_PIN_2,false);
-
-	gpioMode(TIME_PIN,OUTPUT);
-	gpioWrite(TIME_PIN,false);
+	 gpioMode (PIN_LED_BLUE,OUTPUT);
+	 gpioWrite(PIN_LED_BLUE,LED_OFF); //apago led
 
 
-}
-
-//primer pin de error
-
- void turnOn_ErrorLed_1(void){
-	 gpioWrite(ERROR_PIN_1,true);
- }
-
- void turnOff_ErrorLed_1(void){
-	 gpioWrite(ERROR_PIN_1,false);
- }
-
-//Primer pin de debug
-
- void turnOn_DebugLed_1(void){
-	 gpioWrite(DEBUG_PIN_1,true);
- }
-
- void turnOff_DebugLed_1(void){
-	 gpioWrite(DEBUG_PIN_1,false);
  }
 
 
- //segundo debug de pin
+//Funciones identicas para todos los leds , prender, apagar y toglear leds
+// TODO: PRENDER 5_SEC algun LED
 
- void turnOn_DebugLed_2(void){
-	 gpioWrite(DEBUG_PIN_2,true);
+ void turnOn_RedLed(void){
+	 gpioWrite(PIN_LED_RED,false);
+ }
+ void turnOn_GreenLed(void){
+	 gpioWrite(PIN_LED_GREEN,false);
+ }
+ void turnOn_BlueLed(void){
+	 gpioWrite(PIN_LED_BLUE,false);
  }
 
- void turnOff_DebugLed_2(void){
-	 gpioWrite(DEBUG_PIN_2,false);
+ void turnOff_RedLed(void){
+	 gpioWrite(PIN_LED_RED,true);
+ }
+ void turnOff_GreenLed(void){
+	 gpioWrite(PIN_LED_GREEN,true);
+ }
+ void turnOff_BlueLed(void){
+	 gpioWrite(PIN_LED_BLUE,true);
  }
 
-//time pin
 
- void turnOn_TimePin(void){
-	 gpioWrite(TIME_PIN,true);
+ void toggle_RedLed(void){
+	 gpioToggle(PIN_LED_RED);
  }
 
- void turnOff_TimePin(void){
-	 gpioWrite(TIME_PIN,false);
+ void toggle_GreenLed(void){
+	 gpioToggle(PIN_LED_GREEN);
  }
+
+ void toggle_BlueLed(void){
+	 gpioToggle(PIN_LED_BLUE);
+ }
+
+
+
+
+
+

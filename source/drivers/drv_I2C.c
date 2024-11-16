@@ -8,18 +8,13 @@
 /*******************************************************************************
  * INCLUDE HEADER FILES
  ******************************************************************************/
-
-
-#include "board.h"
-#include "gpio.h"
-#include <stdbool.h>
+#include <drivers/drv_I2C.h>
 
  /*******************************************************************************
  * CONSTANT AND MACRO DEFINITIONS USING #DEFINE
  ******************************************************************************/
-
-
-
+ 
+ 
  /*******************************************************************************
  * ENUMERATIONS AND STRUCTURES AND TYPEDEFS
  ******************************************************************************/
@@ -27,58 +22,32 @@
 /*******************************************************************************
  * VARIABLE PROTOTYPES WITH GLOBAL SCOPE
  ******************************************************************************/
-
 /*******************************************************************************
  * FUNCTION PROTOTYPES WITH GLOBAL SCOPE
  ******************************************************************************/
+ 
+ 
+void initI2c(void){
+	i2cDefaultConfig(FXOS8700CQ_SLAVE_ADDR); //48800Hz. El callback es el que lee los datos desde el  chip
+	initI2C();
+}
 
 
- void init_K64Leds(void){
-	 gpioMode (PIN_LED_RED,OUTPUT);
-	 gpioWrite(PIN_LED_RED,false); // prendo y apago para ver que entro
-	 gpioWrite(PIN_LED_RED,true);
-	 gpioMode (PIN_LED_GREEN,OUTPUT);
-	 gpioWrite(PIN_LED_GREEN,false); // prendo y apago para ver que entro
-	 gpioWrite(PIN_LED_GREEN,true);
-	 gpioMode (PIN_LED_BLUE,OUTPUT);
-	 gpioWrite(PIN_LED_BLUE,false); // prendo y apago para ver que entro
-	 gpioWrite(PIN_LED_BLUE,true);
+void loadCallback(ptrToFun callback_){
+	i2cLoadCallback(callback_);
+}
+
+void i2cCommunicationHandler(uint8_t adress_register_,uint8_t * data_,uint8_t size,I2C_MODE mode){
+
+	i2cWriteAndRead( mode , adress_register_ , data_ , size); //Leo o escribo segun corresponda
+
+}
+
+I2C_FAULT faultGetter(void){
+	return getFault();
+}
 
 
- }
-
- void turnOn_RedLed(void){
-	 gpioWrite(PIN_LED_RED,false);
- }
- void turnOn_GreenLed(void){
-	 gpioWrite(PIN_LED_GREEN,false);
- }
- void turnOn_BlueLed(void){
-	 gpioWrite(PIN_LED_BLUE,false);
- }
-
- void turnOff_RedLed(void){
-	 gpioWrite(PIN_LED_RED,true);
- }
- void turnOff_GreenLed(void){
-	 gpioWrite(PIN_LED_GREEN,true);
- }
- void turnOff_BlueLed(void){
-	 gpioWrite(PIN_LED_BLUE,true);
- }
-
-
- void toggle_RedLed(void){
-	 gpioToggle(PIN_LED_RED);
- }
-
- void toggle_GreenLed(void){
-	 gpioToggle(PIN_LED_GREEN);
- }
-
- void toggle_BlueLed(void){
-	 gpioToggle(PIN_LED_BLUE);
- }
 
 
 

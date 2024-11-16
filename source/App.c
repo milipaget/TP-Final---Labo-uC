@@ -8,55 +8,75 @@
   	  	  	Voss, Maria de Guadalupe
   ******************************************************************************/
 
-/*******************************************************************************
- * INCLUDE HEADER FILES
- ******************************************************************************/
+#include <stdbool.h>
+#include <stdint.h>
+#include <stdio.h>
 
-#include "board.h"
-#include "drv_K64.h"
+#include "hardware.h"
+
+//#include "player.h"
+
 #include "fsm.h"
-#include "drv_ENCODER.h"
-#include "drv_MAGTEK.h"
-#include "timer.h"
-#include "drv_DEVBOARD.h"
-#include "display.h"
-#include "drv_DEVLEDS.h"
+#include "fsmtable.h" /*FSM Table*/
+
+#include "MCAL/gpio.h"
+#include "protocols/I2C.h"
+#include "MCAL/board.h"
+
+//#include "button.h"
+//#include "encoder.h"
+//#include "display.h"
+//#include "vumeter.h"
+//#include "equalizer.h"
+//#include "deepSleep.h"
+#include "eventos/eventQueue.h"
 
 /*******************************************************************************
  * CONSTANT AND MACRO DEFINITIONS USING #DEFINE
  ******************************************************************************/
+STATE *p2state = NULL; // puntero al estado
 
 /*******************************************************************************
- *******************************************************************************
-                        GLOBAL FUNCTION DEFINITIONS
- *******************************************************************************
+ * FUNCTION PROTOTYPES FOR PRIVATE FUNCTIONS WITH FILE LEVEL SCOPE
  ******************************************************************************/
 
 /* Función que se llama 1 vez, al comienzo del programa */
-void App_Init (void)
+void App_Init(void)
 {
-	init_DEVLED();
-	NVIC_SetPriority(PD,0);
-	NVIC_SetPriority(PA,1);
-	NVIC_SetPriority(PB,1);
-	NVIC_SetPriority(PC,1);
-	NVIC_SetPriority(PE,1);
-	init_K64Leds();
-	initMagtek();
-	timerInit();
-	drv_ENCODER_init();
-	init_DEVBOARD();
-	displayInit();
+	//playerInit();
+	//initTimer_SYS();
 
+	I2CInit();
 
+	//initButtons();
+	//initEncoder();
+	//initDisplay();
+	//initVumeter();
+	//initEqualizer();
 
+	//deepSleep_init();
+
+	p2state = FSM_GetInitState(); // Inicializo la FSM con el estado inicial
 }
 
 /* Función que se llama constantemente en un ciclo infinito */
-void App_Run (void)
+void App_Run(void)
 {
-	fsm();
-//	if(timerExpired(3)){
-//		turnOff_DebugLed_1();
-//	}
+	static event_t nextEvent;
+
+	nextEvent = getNextEvent();
+	if (nextEvent != None)
+	{
+		p2state = fsm(p2state, nextEvent); 
+	}
+	updatePlayer();
 }
+
+/*******************************************************************************
+ *******************************************************************************
+ LOCAL FUNCTION DEFINITIONS
+ *******************************************************************************
+ ******************************************************************************/
+
+/*******************************************************************************
+ ******************************************************************************/
