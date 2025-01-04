@@ -2,6 +2,7 @@
     "files.associations": {
         "eventqueue.h": "c",
         "peripherals.h": "c",
-        "ftm.h": "c"
+        "ftm.h": "c",
+        "fsmtable.h": "c"
     }
 }

@@ -20,14 +20,14 @@
 #include "fsmtable.h" /*FSM Table*/
 
 #include "MCAL/gpio.h"
-#include "protocols/I2C.h"
+//#include "protocols/I2C.h"
 #include "MCAL/board.h"
 
 //#include "button.h"
 //#include "encoder.h"
 //#include "display.h"
-#include "vumeter/vumeter.h"
-#include "equalizer/equalizer.h"
+//#include "vumeter/vumeter.h"
+//#include "equalizer/equalizer.h"
 //#include "deepSleep.h"
 #include "eventos/eventQueue.h"
 
@@ -46,13 +46,13 @@ void App_Init(void)
 	//playerInit();
 	//initTimer_SYS();
 
-	I2CInit();
+	//I2CInit();
 
 	//initButtons();
 	//initEncoder();
 	//initDisplay();
-	initVumeter();
-	initEqualizer();
+	//initVumeter();
+	//initEqualizer();
 
 	//deepSleep_init();
 
@@ -69,7 +69,7 @@ void App_Run(void)
 	{
 		p2state = fsm(p2state, nextEvent); 
 	}
-	updatePlayer();
+	//updatePlayer();
 }
 
 /*******************************************************************************

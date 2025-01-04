@@ -11,8 +11,9 @@
 #include "drv_ENCODER.h"
 #include "board.h"
 #include "drv_K64.h"
-#include "drv_DEVBOARD.h"
-#include "drv_DEVLEDS.h"
+#include "../eventos/eventQueue.h"
+//#include "drv_DEVBOARD.h"
+//#include "drv_DEVLEDS.h"
 
 
 /*******************************************************************************

@@ -22,15 +22,16 @@
 typedef enum event_type
 {
   None,
-  EncoderLeft,
-  EncoderRight,
-  EncoderClick,
-  ButtonCross,
-  ButtonPoint,
-  ButtonLine,
-  AutoNextSong,
-  SDCardRemoved,
-  SDCardInserted,
+  volumeUP,
+  volumeDOWN,
+  playPause,
+  prevSong,
+  nextSong,
+  onOff,
+  changeFilter, 
+  //AutoNextSong,
+  SDCardOut,
+  SDCardIn
 } event_t;
 
 /*******************************************************************************
