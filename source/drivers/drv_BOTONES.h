@@ -1,19 +1,27 @@
 /*******************************************************************************
-   @file    eventQueue.h
-   @brief   Event handler
+   @file    drv_BOTONES.h
+   @brief   Driver que inicializa y maneja el uso de los botones
    @author  Grupo 4 Laboratorio de Microprocesadores:
   	  	  	Corcos, Manuel
   	  	  	Lesiuk, Alejandro
   	  	  	Paget, Milagros
   	  	  	Voss, Maria de Guadalupe
-  ******************************************************************************/
+********************************************************************************/
 
-#ifndef _EVENTQUEUE_H_
-#define _EVENTQUEUE_H_
+#ifndef _DRV_BOTONES_H_
+#define _DRV_BOTONES_H_
 
 /*******************************************************************************
  * INCLUDE HEADER FILES
  ******************************************************************************/
+
+#include <stdint.h>
+#include <stdbool.h>
+//#include "MK64F12.h"
+#include "../board/pinout.h"
+#include "../MCAL/gpio.h"
+#include "../timers/timer.h"
+#include "../eventos/eventQueue.h"
 
 /*******************************************************************************
  * CONSTANT AND MACRO DEFINITIONS USING #DEFINE
@@ -23,40 +31,27 @@
  * ENUMERATIONS AND STRUCTURES AND TYPEDEFS
  ******************************************************************************/
 
-typedef enum event_type
-{
-  None,
-  volumeUP,
-  volumeDOWN,
-  playPause,
-  prevSong,
-  nextSong,
-  onOff,
-  changeFilter, 
-  //AutoNextSong,
-  SDCardOut,
-  SDCardIn
-} event_t;
-
 /*******************************************************************************
  * VARIABLE PROTOTYPES WITH GLOBAL SCOPE
  ******************************************************************************/
 
-// +ej: extern unsigned int anio_actual;+
-
 /*******************************************************************************
  * FUNCTION PROTOTYPES WITH GLOBAL SCOPE
  ******************************************************************************/
+/**
+ * @brief Esta función se encarga de inicializar todos los botones conectados
+ *        encargados del funcionamiento del reproductor.
+ * @return void
+ */
+void initButtons(void);
 
 /**
- * @brief FSM Principal del proyecto
- * @param parametro utilizado dentro de la FSM para guardar los datos que se van escribiendo
+ * @brief Esta función se encarga de hacer el manejo periódico de los botones.
+ * @return void
  */
+void buttonMgmtISR(void);
 
-event_t getNextEvent(void);
-void putEvent(event_t event);
-event_t popEvent(void);
 /*******************************************************************************
  ******************************************************************************/
 
-#endif // _EVENTQUEUE_H_
+#endif // _DRV_BOTONES_H_

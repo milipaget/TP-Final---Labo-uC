@@ -1,7 +1,11 @@
-/***************************************************************************/ /**
-   @file     +Nombre del archivo (ej: template.c)+
-   @brief    +Descripcion del archivo+
-   @author   +Nombre del autor (ej: Salvador Allende)+
+/*******************************************************************************
+   @file    eventQueue.c
+   @brief   Event handler
+   @author  Grupo 4 Laboratorio de Microprocesadores:
+  	  	  	Corcos, Manuel
+  	  	  	Lesiuk, Alejandro
+  	  	  	Paget, Milagros
+  	  	  	Voss, Maria de Guadalupe
   ******************************************************************************/
 
 /*******************************************************************************
