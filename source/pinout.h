@@ -1,6 +1,6 @@
 /*******************************************************************************
    @file    pinout.h
-   @brief   Archivo que contiene los pines utilizados y su uso
+   @brief   Archivo que contiene las constantes de los pines utilizados
    @author  Grupo 4 Laboratorio de Microprocesadores:
   	  	  	Corcos, Manuel
   	  	  	Lesiuk, Alejandro
@@ -10,10 +10,6 @@
 
 #ifndef _PINOUT_H_
 #define _PINOUT_H_
-
-/*******************************************************************************
- * INCLUDE HEADER FILES
- ******************************************************************************/
 
 /*******************************************************************************
  * CONSTANT AND MACRO DEFINITIONS USING #DEFINE

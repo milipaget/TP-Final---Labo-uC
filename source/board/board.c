@@ -8,8 +8,8 @@
 
 #include "board.h"
 #include <stdint.h>
-#include "fsl_common.h"
-#include "fsl_debug_console.h"
+#include "../drivers/fsl_common.h"
+//#include "../drivers/fsl_debug_console.h" ESTE ARCHIVO NO LO TENEMOS...
 #if defined(SDK_I2C_BASED_COMPONENT_USED) && SDK_I2C_BASED_COMPONENT_USED
 #include "fsl_i2c.h"
 #endif /* SDK_I2C_BASED_COMPONENT_USED */

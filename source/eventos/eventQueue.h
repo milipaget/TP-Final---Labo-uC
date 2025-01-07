@@ -15,16 +15,7 @@
  * INCLUDE HEADER FILES
  ******************************************************************************/
 
-/*******************************************************************************
- * CONSTANT AND MACRO DEFINITIONS USING #DEFINE
- ******************************************************************************/
-
-/*******************************************************************************
- * ENUMERATIONS AND STRUCTURES AND TYPEDEFS
- ******************************************************************************/
-
-typedef enum event_type
-{
+typedef enum event_type{
   None,
   volumeUP,
   volumeDOWN,
@@ -39,23 +30,27 @@ typedef enum event_type
 } event_t;
 
 /*******************************************************************************
- * VARIABLE PROTOTYPES WITH GLOBAL SCOPE
- ******************************************************************************/
-
-// +ej: extern unsigned int anio_actual;+
-
-/*******************************************************************************
  * FUNCTION PROTOTYPES WITH GLOBAL SCOPE
  ******************************************************************************/
 
 /**
- * @brief FSM Principal del proyecto
- * @param parametro utilizado dentro de la FSM para guardar los datos que se van escribiendo
+ * @brief Establece el siguiente elemento en la cola de eventos
+ * @param void
  */
-
 event_t getNextEvent(void);
+
+/**
+ * @brief Agrega un elemento a la cola de eventos
+ * @param event_t evento a agregar
+ */
 void putEvent(event_t event);
+
+/**
+ * @brief Elimina un elemento de la cola de eventos
+ * @param void
+ */
 event_t popEvent(void);
+
 /*******************************************************************************
  ******************************************************************************/
 

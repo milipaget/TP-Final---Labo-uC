@@ -77,8 +77,10 @@ void initButtons(void){
     initNextSongButton();
     initOnOffButton();
     initPrevSongButton();
-    //buttonTimer = createTimer_SYS(100, buttonMgmtISR, SYS_PERIODIC);
-	//startTimer_SYS(buttonTimer);
+
+    //Se agrega un timer periódico para tener una verificación del estado de los botones
+    buttonTimer = timerGetId();
+    timerStart(buttonTimer, TIMER_MS_2_TICKS(100), TIM_MODE_PERIODIC, buttonMgmtISR);
 }
 
 void buttonMgmtISR(void){
