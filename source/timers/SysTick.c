@@ -34,17 +34,14 @@ void (*ptr_to_fun_systick)(void)=0;
  * FUNCTION PROTOTYPES WITH GLOBAL SCOPE
  ******************************************************************************/
 /**
- * @brief Initialize SysTic driver
+ * @brief Initialize SysTick driver
  * @param funcallback Function to be call every SysTick
  * @return Initialization and registration succeed
  */
 bool SysTick_Init (void (*funcallback)(void))
 {
     static bool yaInit = false;
-#if DEVELOPMENT_MODE
-    if (!yaInit && funcallback)
-#endif // DEVELOPMENT_MODE
-    {
+    if (!yaInit && funcallback){
         SysTick->CTRL = 0x00;
         SysTick->LOAD =SYSTICK_LOAD_INIT; //100000-1;//
         SysTick->VAL  = 0x00;

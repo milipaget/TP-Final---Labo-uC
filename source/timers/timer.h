@@ -35,11 +35,12 @@
  ******************************************************************************/
 
 // Timer Modes
-enum { TIM_MODE_SINGLESHOT, TIM_MODE_PERIODIC, CANT_TIM_MODES };
+typedef enum { TIM_MODE_SINGLESHOT, TIM_MODE_PERIODIC, CANT_TIM_MODES } tim_modes_t;
+
+// Timer States
+enum {TIM_STATE_FREE, TIM_STATE_SELECTED, TIM_STATE_RUNNING};
 
 // Timer alias
-typedef uint32_t ttick_t;
-typedef uint8_t tim_id_t;
 typedef void (*tim_callback_t)(void);
 
 
@@ -56,49 +57,74 @@ typedef void (*tim_callback_t)(void);
  */
 void timerInit(void);
 
-
-// Non-Blocking services ////////////////////////////////////////////////
-
 /**
- * @brief Request an timer
- * @return ID of the timer to use
- */
-tim_id_t timerGetId(void);
-
-
-/**
- * @brief Begin to run a new timer
+ * @brief Create a new timer
  * @param id ID of the timer to start
- * @param ticks time until timer expires, in ticks
+ * @param time time until timer expires
  * @param mode SINGLESHOT or PERIODIC
  * @param callback Function to be call when timer expires
+ * @return uint8_t timer ID
  */
-void timerStart(tim_id_t id, ttick_t ticks, uint8_t mode, tim_callback_t callback);
+uint8_t createTimer(uint32_t time, tim_callback_t callback, tim_modes_t mode);
 
+/**
+ * @brief Start running a timer
+ * @param tim_id timer ID
+ */
+void timerStart(uint8_t tim_id);
 
 /**
  * @brief Finish to run a timer
- * @param id ID of the timer to stop
+ * @param tim_id ID of the timer to stop
  */
-void timerStop(tim_id_t id);
-
+void timerStop(uint8_t tim_id);
 
 /**
- * @brief Verify if a timer has run timeout
- * @param id ID of the timer to check for expiration
- * @return 1 = timer expired
+ * @brief Set timer callback
+ * @param tim_id ID of the timer
+ * @param callback callback del timer
  */
-bool timerExpired(tim_id_t id);
-
-bool timerRunning(tim_id_t id);
-// Blocking services ////////////////////////////////////////////////
+void setTimerCallback(uint8_t tim_id, tim_callback_t callback);
 
 /**
- * @brief Wait the specified time. Use internal timer
- * @param ticks time to wait in ticks
+ * @brief Set timer time
+ * @param tim_id ID of the timer to stop
+ * @param time time del timer
  */
-void timerDelay(ttick_t ticks);
+void setTimerTime(uint8_t tim_id, uint32_t time);
 
+/**
+ * @brief Set timer mode
+ * @param tim_id ID of the timer
+ * @param mode mode del timer
+ */
+void setTimerMode(uint8_t tim_id, tim_modes_t mode);
+
+/**
+ * @brief Destroy timer
+ * @param id ID of the timer
+ */
+void destroyTimer(uint8_t tim_id);
+
+/**
+ * @brief Restart timer
+ * @param id ID of the timer
+ */
+void resetTimer(uint8_t tim_id);
+
+/**
+ * @brief Get timer time
+ * @param id ID of the timer
+ * @return uint32_t timer time
+ */
+uint32_t getTime(uint8_t tim_id);
+
+/**
+ * @brief Get timer state
+ * @param id ID of the timer
+ * @return uint8_t timer state
+ */
+uint8_t getTimerState(uint8_t tim_id);
 
 /*******************************************************************************
  ******************************************************************************/

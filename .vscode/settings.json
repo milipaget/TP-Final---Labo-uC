@@ -3,6 +3,7 @@
         "eventqueue.h": "c",
         "peripherals.h": "c",
         "ftm.h": "c",
-        "fsmtable.h": "c"
+        "fsmtable.h": "c",
+        "pinout.h": "c"
     }
 }
