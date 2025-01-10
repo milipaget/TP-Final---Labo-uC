@@ -4,6 +4,12 @@
         "peripherals.h": "c",
         "ftm.h": "c",
         "fsmtable.h": "c",
-        "pinout.h": "c"
+        "pinout.h": "c",
+        "sdmmc_config.h": "c",
+        "TEMPLATE.C": "cpp",
+        "mp3_decoder.h": "c",
+        "fsl_sysmpu.h": "c",
+        "fsl_sdmmc_common.h": "c",
+        "fsl_sdmmc_host.h": "c"
     }
 }

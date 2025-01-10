@@ -68,12 +68,7 @@ void gpioMode (pin_t pin, uint8_t mode){
 		case OUTPUT_PULLUP:
 			break;
 	}
-
-
-
 }
-
-
 
 /**
  * @brief Configures how the pin reacts when an IRQ event ocurrs
@@ -95,9 +90,6 @@ bool gpioIRQ (pin_t pin, uint8_t irqMode, pinIrqFun_t irqFun){
 	return 0;
 }
 
-
-
-
 /*
  * @brief Write a HIGH or a LOW value to a digital pin
  * @param pin the pin to write (according PORTNUM2PIN)
@@ -114,9 +106,6 @@ void gpioWrite(pin_t pin, bool value){
 
 }
 
-
-
-
 /*
  * @brief Toggle the value of a digital pin (HIGH<->LOW)
  * @param pin the pin to toggle (according PORTNUM2PIN)
@@ -131,18 +120,12 @@ void gpioToggle (pin_t pin){
 		gpio->PDOR |= (1<<PIN2NUM(pin));
 	}
 }
+
 /*
  * @brief Reads the value from a specified digital pin, either HIGH or LOW.
  * @param pin the pin to read (according PORTNUM2PIN)
  * @return HIGH or LOW
  */
-/*bool gpioRead (pin_t pin) {
-
-	GPIO_Type* gpio = GPIO_PTRS[PIN2PORT(pin)];
-	return (( gpio->PDIR &  (1<<PIN2NUM(pin)) ) == (1<<PIN2NUM(pin)));
-
-}*/
-
 bool gpioRead (pin_t pin) {
 
 	GPIO_Type* gpio = GPIO_PTRS[PIN2PORT(pin)];

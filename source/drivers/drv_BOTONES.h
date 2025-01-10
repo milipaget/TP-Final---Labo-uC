@@ -17,7 +17,7 @@
 
 #include <stdint.h>
 #include <stdbool.h>
-//#include "MK64F12.h"
+#include "MK64F12.h"
 #include "../pinout.h"
 #include "../MCAL/gpio.h"
 #include "../timers/timer.h"

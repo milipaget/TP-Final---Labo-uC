@@ -14,7 +14,7 @@
 #include "ff.h"
 #include "diskio.h"
 #include "fsl_sd_disk.h"
-#include "sdmmc_config.h"
+#include "board/sdmmc_config.h"
 #include "fsl_sysmpu.h"
 #include "MK64F12.h"
 #include <mp3dec.h>
