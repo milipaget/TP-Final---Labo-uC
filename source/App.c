@@ -22,7 +22,7 @@
 #include "MCAL/gpio.h"
 //#include "protocols/I2C.h"
 #include "MCAL/board.h"
-
+#include "mp3Config.h"
 //#include "button.h"
 //#include "encoder.h"
 //#include "display.h"
@@ -55,6 +55,7 @@ void App_Init(void)
 	//initEqualizer();
 
 	//deepSleep_init();
+	initMp3Config();
 
 	p2state = FSM_GetInitState(); // Inicializo la FSM con el estado inicial
 }

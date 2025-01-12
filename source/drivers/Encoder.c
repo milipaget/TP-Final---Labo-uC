@@ -2,11 +2,11 @@
 #include <hardware.h>
 #include "..\timer.h"       // Para poder controlar los timers: crearlos y configurarlos...
 #include "..\gpio.h"        // Configuración de los gpio: qué pin y en qué modo...
-#include "..\config.h"      // Configuración relqacionada a la placa -> qué pines de qué puerto usa
+#include "..\pinout.h"      // Configuración relqacionada a la placa -> qué pines de qué puerto usa
 #include <stdlib.h>         // :)
 #include "..\Queue.h"
-#include "..\board.h"
-#include "eventQueue.h"     // Para poner el evento en la cola
+#include "../board/board.h"
+#include "../eventos/eventQueue.h"     // Para poner el evento en la cola
 
 
 /*

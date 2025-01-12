@@ -10,6 +10,13 @@
         "mp3_decoder.h": "c",
         "fsl_sysmpu.h": "c",
         "fsl_sdmmc_common.h": "c",
-        "fsl_sdmmc_host.h": "c"
+        "fsl_sdmmc_host.h": "c",
+        "algorithm": "cpp",
+        "cstdint": "cpp",
+        "type_traits": "cpp",
+        "xutility": "cpp",
+        "stdlib.h": "c",
+        "mp3dec.h": "c",
+        "musichandler.h": "c"
     }
 }

@@ -1,6 +1,6 @@
 /***************************************************************************//**
   @file     musicHandler.h
-  @brief    Timer driver. Advance implementation
+  @brief    Handles songs, its reproduction and makes space for storage.
   @author   Grupo 4 Laboratorio de Microprocesadores:
   	  	  	Corcos, Manuel
   	  	  	Lesiuk, Alejandro
@@ -22,6 +22,16 @@
 /*******************************************************************************
  * ENUMERATIONS AND STRUCTURES AND TYPEDEFS
  ******************************************************************************/
+typedef struct _Song{
+  char *filename;
+  char *path;
+} song_t;
+
+typedef struct _SongInfo{
+  char *title;
+  char *artist;
+  char *date;
+} song_info_t;
 
 /*******************************************************************************
  * VARIABLE PROTOTYPES WITH GLOBAL SCOPE
@@ -36,6 +46,8 @@
  * @param id ID of the timer
  * @return uint8_t timer state
  */
+song_t * newSong(const char *path, const char *filename);
+void destroySong(song_t *song);
 
 
 /*******************************************************************************

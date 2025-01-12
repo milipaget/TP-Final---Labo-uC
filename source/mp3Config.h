@@ -1,43 +1,63 @@
-/***************************************************************************/ /**
-   @file     +Nombre del archivo (ej: template.h)+
-   @brief    +Descripcion del archivo+
-   @author   +Nombre del autor (ej: Salvador Allende)+
+/*******************************************************************************
+   @file    mp3Config.h
+   @brief   Contiene las variables y constantes necesarias para el funcionamiento
+            del mp3
+   @author  Grupo 4 Laboratorio de Microprocesadores:
+  	  	  	Corcos, Manuel
+  	  	  	Lesiuk, Alejandro
+  	  	  	Paget, Milagros
+  	  	  	Voss, Maria de Guadalupe
   ******************************************************************************/
 
-#ifndef _MP3DEC_H_
-#define _MP3DEC_H_
+#ifndef _MP3CONFIG_H_
+#define _MP3CONFIG_H_
 
 /*******************************************************************************
  * INCLUDE HEADER FILES
  ******************************************************************************/
 #include <stdbool.h>
 #include <stdint.h>
-#include "songList.h"
+#include <stdio.h>
+
 /*******************************************************************************
  * CONSTANT AND MACRO DEFINITIONS USING #DEFINE
  ******************************************************************************/
-#define DEC_BUFFER_SIZE 1152
+#define EQTYPE 4
+#define MAX_VOLUME 30
+
 /*******************************************************************************
  * ENUMERATIONS AND STRUCTURES AND TYPEDEFS
  ******************************************************************************/
+//const char *eqTypes[EQTYPE] = {"None", "Rock", "Pop", "Bass"};
+enum filterTypes{NONE, ROCK, POP, BASS};
+enum errorTypes{NONE, NO_SD, NO_SONGS};
+
+typedef struct 
+{
+	  uint8_t volume;
+    uint8_t songPointer;
+    bool isPlaying;
+    bool isOn;
+    uint8_t errorType;
+    uint8_t filterType;
+}mp3config_variables_t;
 
 /*******************************************************************************
  * VARIABLE PROTOTYPES WITH GLOBAL SCOPE
  ******************************************************************************/
-
-// +ej: extern unsigned int anio_actual;+
+static int songNum;//Esta variable se actualiza cuando se inserta la SD card (uint8_t???)
+static mp3config_variables_t mp3ConfigVariables;
+//mp3config_variables* pointer2config = mp3ConfigVariables
 
 /*******************************************************************************
  * FUNCTION PROTOTYPES WITH GLOBAL SCOPE
  ******************************************************************************/
 
-bool MP3DecInit(void);
-
-int MP3SelectSong(song_t *song);
-
-int MP3DecDecode(int16_t *buffer, uint32_t *samprate);
-
+/**
+ * @brief Initial configuration 
+ */
+void initMp3Config(void);
 /*******************************************************************************
  ******************************************************************************/
 
-#endif // _QUEUE_H_
+#endif // _MP3CONFIG_H_
