@@ -1,6 +1,6 @@
 /***************************************************************************//**
   @file     musicHandler.h
-  @brief    Handles songs, its reproduction and makes space for storage.
+  @brief    Manages playing songs.
   @author   Grupo 4 Laboratorio de Microprocesadores:
   	  	  	Corcos, Manuel
   	  	  	Lesiuk, Alejandro
@@ -22,16 +22,19 @@
 /*******************************************************************************
  * ENUMERATIONS AND STRUCTURES AND TYPEDEFS
  ******************************************************************************/
-typedef struct _Song{
-  char *filename;
-  char *path;
-} song_t;
+typedef enum _Player_MSG
+{
+  Playing,
+  Paused,
+  Stoped
+} player_msg_t;
 
-typedef struct _SongInfo{
-  char *title;
-  char *artist;
-  char *date;
-} song_info_t;
+typedef struct _Player
+{
+  song_node_t *currSong;
+  float volume;
+
+} player_t;
 
 /*******************************************************************************
  * VARIABLE PROTOTYPES WITH GLOBAL SCOPE
@@ -46,9 +49,20 @@ typedef struct _SongInfo{
  * @param id ID of the timer
  * @return uint8_t timer state
  */
-song_t * newSong(const char *path, const char *filename);
-void destroySong(song_t *song);
+bool playPlayer();
+bool stopPlayer();
+bool pausePlayer();
+bool nextSong();
+bool prevSong();
+void adjustVolume(float vol);
+char *getCurrentSongName();
 
+song_node_t *getSongList();
+bool selectSong(song_node_t *song);
+
+player_msg_t updatePlayer();
+
+bool playerInit();
 
 /*******************************************************************************
  ******************************************************************************/

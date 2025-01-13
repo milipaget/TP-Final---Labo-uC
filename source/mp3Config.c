@@ -18,7 +18,7 @@
                         GLOBAL FUNCTION DEFINITIONS
  *******************************************************************************
  ******************************************************************************/
-void initMp3Congig(void){
+void initMp3Config(void){
     mp3ConfigVariables.volume = MAX_VOLUME/2; //uint8_t
     mp3ConfigVariables.songPointer = 0; //uint8_t
     mp3ConfigVariables.isPlaying = false;

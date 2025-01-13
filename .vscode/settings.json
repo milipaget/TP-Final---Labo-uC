@@ -17,6 +17,11 @@
         "xutility": "cpp",
         "stdlib.h": "c",
         "mp3dec.h": "c",
-        "musichandler.h": "c"
+        "musichandler.h": "c",
+        "fsl_sd_disk.h": "c",
+        "pin_mux.h": "c",
+        "board.h": "c",
+        "equalizer.h": "c",
+        "vumeter.h": "c"
     }
 }
