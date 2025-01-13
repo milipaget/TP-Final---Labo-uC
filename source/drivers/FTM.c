@@ -8,8 +8,8 @@
  * INCLUDE HEADER FILES
  ******************************************************************************/
 #include "FTM.h"              // Librería FTM para control del temporizador
-#include "gpio.h"             // Librería GPIO para manejar pines
-#include "MK64F12.h"          // Definiciones específicas del microcontrolador K64
+#include    "..\MCAL\gpio.h"             // Librería GPIO para manejar pines
+#include "...\SDK\CMSIS\MK64F12.h"          // Definiciones específicas del microcontrolador K64
 #include <stdlib.h>           // Funciones estándar de C
 #include <stdint.h>           // Tipos de datos estándar
 #include <stdbool.h>          // Soporte para valores booleanos

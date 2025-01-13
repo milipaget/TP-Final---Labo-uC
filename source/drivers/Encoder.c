@@ -1,24 +1,15 @@
-#include "encoder.h"        // :)
-#include <hardware.h>
-#include "..\timer.h"       // Para poder controlar los timers: crearlos y configurarlos...
-#include "..\gpio.h"        // Configuración de los gpio: qué pin y en qué modo...
-#include "..\pinout.h"      // Configuración relqacionada a la placa -> qué pines de qué puerto usa
-#include <stdlib.h>         // :)
-#include "..\Queue.h"
-#include "../board/board.h"
-#include "../eventos/eventQueue.h"     // Para poner el evento en la cola
+#include    "Encoder.h"        // :)
+#include    "..\SDK\startup\hardware.h"
+#include    "..\timers\timer.h"       // Para poder controlar los timers: crearlos y configurarlos...
+#include    "..\MCAL\gpio.h"        // Configuración de los gpio: qué pin y en qué modo...
+#include    "..\pinout.h"      // Configuración relqacionada a la placa -> qué pines de qué puerto usa
+#include    <stdlib.h>         // :)
+//#include "..\Queue.h"
+#include "..\MCAL\board.h"
+#include "..\eventos\eventQueue.h"     // Para poner el evento en la cola
 
 
 /*
-	En config.h: se define qué pin de qué puerto se usa para las entradas:
-	#define ENCODER_OUT_A PORTNUM2PIN(PB, 2)
-	#define ENCODER_OUT_B PORTNUM2PIN(PB, 3)
-
-	Después esto se va a usar para configurar los gpio:
-	gpioMode (pin_t pin, uint8_t mode); -> gpioMode(ENCODER_OUT_A, INPUT);
-	gpioIRQ (pin_t pin, uint8_t irqMode, pinIrqFun_t irqFun); -> (gpioIRQ(ENCODER_OUT_A, GPIO_IRQ_MODE_FALLING_EDGE, &encoderACallback))
-	En esta última se define que es una entrada y que la función que debe realizarse al estar esta interrupción es RCHA_CB (cuando se activa la señal)
-
 
     Si se detecta un giro se pone el evento en la cola         putEvent(EncoderLeft);  // Registrar evento de giro antihorario
 
@@ -130,4 +121,21 @@ static void encoderBCallback(void) {
 // Rehabilita la detección de entradas del encoder
 static void rebootEncoderDetection(void) {
     ignoreRotaryInput = false; // Permitir nuevas interrupciones :) 
+}
+
+void buttonEncoder_ISR(void){
+
+	static bool buttonState_ = HIGH;
+		bool state = gpioRead(BUTTON_ENCODER_PIN);
+
+		if(buttonState_ == HIGH && state == LOW){
+
+			buttonState_ = state;
+
+			putEvent(EncoderClick);
+		}
+		else if (buttonState_ == LOW && state == HIGH){
+
+			buttonState_ = state;
+		}
 }

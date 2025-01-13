@@ -3,10 +3,10 @@
 	del microcontrolador MK64F12, utilizado para ejecutar tareas periódicas en sistemas embebidos.
 */
 
-#include "MK64F12.h"		// Biblioteca del microcontrolador MK64F12
-#include "hardware.h"		// Definiciones de hardware
 #include "PIT.h"
-#include "gpio.h"
+#include "...\SDK\CMSIS\MK64F12.h" 		// Biblioteca del microcontrolador MK64F12
+#include    "..\SDK\startup\hardware.h"		// Definiciones de hardware
+#include    "..\MCAL\gpio.h"
 
 #define REFERENCE ((float)(0.02))	// Referencia de tiempo en microsegundos, usada para el cálculo del valor de cuenta
 
