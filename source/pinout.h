@@ -26,9 +26,9 @@
 #define CHANGE_FILTER_BUTTON_PIN 11
 
 // Pines para encoder
-	#define ENCODER_OUT_A PORTNUM2PIN(PB, 2)
-	#define ENCODER_OUT_B PORTNUM2PIN(PB, 3)
-  #define BUTTON_ENCODER_PIN PORTNUM2PIN(PC, 5) // Botón del encoder
+#define ENCODER_OUT_A PORTNUM2PIN(PB, 2)
+#define ENCODER_OUT_B PORTNUM2PIN(PB, 3)
+#define BUTTON_ENCODER_PIN PORTNUM2PIN(PC, 5) // Botón del encoder
 
 //Pines utilizados para la matriz de LEDs
 

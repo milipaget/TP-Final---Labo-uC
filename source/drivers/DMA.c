@@ -8,7 +8,7 @@
  * INCLUDE HEADER FILES
  ******************************************************************************/
 #include "DMA.h"
-#include "...\SDK\CMSIS\MK64F12.h"
+#include "MK64F12.h"
 #include <stdlib.h>
 #include <stdint.h>
 #include <stdbool.h>
