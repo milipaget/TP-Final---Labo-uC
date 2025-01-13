@@ -8,9 +8,9 @@
  * INCLUDE HEADER FILES
  ******************************************************************************/
 #include "FTM.h"
-#include "gpio.h"
+#include    "..\MCAL\gpio.h" 
 #include "DMA.h"
-#include "MK64F12.h"
+#include "...\SDK\CMSIS\MK64F12.h"
 #include <stdlib.h>
 #include <stdint.h>
 #include <stdbool.h>

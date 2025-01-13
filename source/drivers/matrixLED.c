@@ -1,9 +1,9 @@
-#include "LEDMatrixControl.h"   // :)
+#include "matrixLED.h"   // :)
 #include "PWM.h"        // Para mandar a la matriz 
 #include "PIT.h"        // Algo de los timers
 #include "FTM.h"        // Algo de frecuencia
-#include "MK64F12.h"    // De la plaquitax
-#include "config.h"     // Configura qué pines se usan para x cosa
+#include "...\SDK\CMSIS\MK64F12.h"    // De la plaquitax
+#include    "..\pinout.h"     // Configura qué pines se usan para x cosa
 
 // En config.h  #define DIN_PIN PORTNUM2PIN(PB, 9) // GPIO to transfer leds data
 

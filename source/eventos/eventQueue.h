@@ -25,9 +25,13 @@ typedef enum event_type{
   onOff,
   changeFilter, 
   //AutoNextSong,
+  EncoderLeft,
+  EncoderRight,
+  EncoderClick,
   SDCardOut,
   SDCardIn
 } event_t;
+
 
 /*******************************************************************************
  * FUNCTION PROTOTYPES WITH GLOBAL SCOPE
